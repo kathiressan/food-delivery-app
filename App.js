@@ -13,6 +13,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { store } from "./store";
 import { Provider } from "react-redux";
 import RegisterScreen from "./screens/RegisterScreen";
+import NewProductScreen from "./screens/NewProductScreen";
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -112,6 +113,13 @@ export default function App() {
                 <Stack.Screen
                   name="HomeScreen"
                   component={HomeScreen}
+                  options={{
+                    headerShown: false,
+                  }}
+                />
+                                <Stack.Screen
+                  name="NewProductScreen"
+                  component={NewProductScreen}
                   options={{
                     headerShown: false,
                   }}

@@ -1,5 +1,15 @@
 {
   "expo": {
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you share pictures.",
+          "cameraPermission": "The app accesses your camera to let you videos.",
+          "microphonePermission": "The app accesses your microphone to let you share audio"
+        }
+      ]
+    ],
     "name": "food-delivery-app",
     "slug": "food-delivery-app",
     "version": "1.0.0",
