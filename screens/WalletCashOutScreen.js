@@ -78,7 +78,7 @@ const WalletCashOutScreen = () => {
             onPress={() => {setChecked("first")}}
           >
             <View
-                style={tw`h-5 w-5 border rounded-full mr-3 ${checked == "first" && "bg-black"}`}
+                style={tw`h-5 w-5 border rounded-full mr-3 ${checked == "first" ? "bg-black" : "bg-white"}`}
               />
           </TouchableOpacity>
           <Text>Current bank</Text>
@@ -90,13 +90,13 @@ const WalletCashOutScreen = () => {
           onPress={() => {setChecked("second")}}
         >
           <View
-            style={tw`h-5 w-5 border rounded-full mr-3 ${checked == "second" && "bg-black"}`}
+            style={tw`h-5 w-5 border rounded-full mr-3 ${checked == "second" ? "bg-black" : "bg-white"}`}
           />
         </TouchableOpacity>
 
           <Text>Other bank</Text>
       </View>
-      <Text style={tw`ml-8 text-gray-500`}>Online banking - Bank Islam {">"}</Text>
+      <Text style={tw`ml-8 text-gray-500`}>Online banking - Bank Islam </Text>
       <Text style={tw`ml-8 text-gray-500`}>Account number: </Text>
       <TextInput
         style={tw`text-sm w-60 border ml-8`}

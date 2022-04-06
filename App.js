@@ -20,6 +20,7 @@ import ProductScreen from "./screens/ProductScreen";
 import WalletCashOutScreen from "./screens/WalletCashOutScreen";
 import RatingScreen from "./screens/RatingScreen";
 import WalletBalanceScreen from "./screens/WalletBalanceScreen";
+import SalesScreen from "./screens/SalesScreen";
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -154,6 +155,13 @@ export default function App() {
                 <Stack.Screen
                   name="WalletBalanceScreen"
                   component={WalletBalanceScreen}
+                  options={{
+                    headerShown: false,
+                  }}
+                />
+                <Stack.Screen
+                  name="SalesScreen"
+                  component={SalesScreen}
                   options={{
                     headerShown: false,
                   }}

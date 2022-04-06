@@ -1,12 +1,27 @@
-import { View, Text, SafeAreaView } from "react-native";
+import { View, Text, SafeAreaView, FlatList } from "react-native";
 import { Rating } from "react-native-rating-element";
 import CircularProgress from 'react-native-circular-progress-indicator';
 import React from 'react';
 import tw from "twrnc";
 import Header from "../components/Header";
 import MainTitle from "../components/MainTitle";
+import ReviewerComponent from "../components/ReviewerComponent";
 
 const RatingScreen = () => {
+  const DATA = [
+    {
+      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+      username: "Kathiressan",
+      rating: 3.2,
+      timestamp: "2022-06-04"
+    },
+    {
+      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28bb',
+      username: "Kathiressan2",
+      rating: 4.5,
+      timestamp: "2022-06-04"
+    }
+  ];
   return (
     <SafeAreaView style={tw`flex bg-purple-400 h-full`}>
         <Header />
@@ -38,6 +53,12 @@ const RatingScreen = () => {
                 direction="row" // anyOf["row" (default), "row-reverse", "column", "column-reverse"]
             />
         </View>
+
+        <FlatList
+          data={DATA}
+          renderItem={ReviewerComponent}
+          keyExtractor={item => item.id}
+        />
 
     </SafeAreaView>
   );

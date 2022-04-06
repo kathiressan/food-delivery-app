@@ -78,7 +78,7 @@ const HomeScreen = () => {
           }}
         />
         <TouchableOpacity>
-          <Text style={tw`ml-6 text-white text-xl`}>My Sales</Text>
+          <Text  onPress={() => {navigation.navigate("SalesScreen");}} style={tw`ml-6 text-white text-xl`}>My Sales</Text>
         </TouchableOpacity>
         <View
           style={{

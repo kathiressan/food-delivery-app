@@ -22,13 +22,22 @@ import {
   import { useNavigation } from "@react-navigation/native";
   import * as ImagePicker from 'expo-image-picker';
 
-const ProductCard = ({id, image, productName, price, stock, rating, sold, views}) => {
+const ProductCard = ({item: {id, image, productName, price, stock, rating, sold, views}}) => {
   return (
-    <View style={tw`flex bg-gray-400 p-3 m-2 border rounded-lg`}>
+    <View style={tw`flex bg-gray-400 p-3 m-2 border rounded-lg justify-center`}>
 
-      <View>
+      <View style={tw`flex flex-row mb-2`}>
         <View>
-            <Text>{image}</Text>
+          <Image
+              on
+              style={[
+                tw`rounded-lg mr-5`,
+                { width: 40, height: 40, resizeMode: "contain" },
+              ]}
+              source={{
+                uri: image,
+              }}
+            />
         </View>
         
         <View style={tw`flex`}>
@@ -36,13 +45,24 @@ const ProductCard = ({id, image, productName, price, stock, rating, sold, views}
             <Text style={tw`text-white`}>{`RM ${price}`}</Text>
         </View>
       </View>
-      
 
-      <View>
-        <Text>Stock: {stock}</Text>
-        <Text>Rating: {rating}</Text>
-        <Text>Sold: {sold}</Text>
-        <Text>Views: {views}</Text>
+      <View
+        style={{
+            borderColor: "white",
+            borderStyle: "dotted",
+            borderWidth: 1,
+            borderRadius: 1,
+            marginBottom: 15,
+        }}
+      />      
+
+      <View style={tw`flex flex-row flex-wrap`}>
+        <Text style={tw`text-white mr-3`}>Stock: {stock}</Text>
+        <Text style={tw`text-white mr-3`}>Rating: {rating}</Text>
+      </View>
+      <View style={tw`flex flex-row flex-wrap`}>
+        <Text style={tw`text-white mr-3`}>Sold: {sold}</Text>
+        <Text style={tw`text-white mr-3`}>Views: {views}</Text>
       </View>
     </View>
   );
