@@ -30,7 +30,7 @@ const HomeScreen = () => {
       <Header />
       <View style={tw`flex mt-5`}>
         <TouchableOpacity>
-          <Text style={tw`ml-6 text-white text-xl`}>My Products</Text>
+          <Text onPress={() => {navigation.navigate("ProductScreen");}} style={tw`ml-6 text-white text-xl`}>My Products</Text>
         </TouchableOpacity>
         <View
           style={{
@@ -54,7 +54,7 @@ const HomeScreen = () => {
           }}
         />
         <TouchableOpacity>
-          <Text style={tw`ml-6 text-white text-xl`}>Wallet Balance</Text>
+          <Text onPress={() => {navigation.navigate("WalletBalanceScreen");}} style={tw`ml-6 text-white text-xl`}>Wallet Balance</Text>
         </TouchableOpacity>
         <View
           style={{
@@ -66,7 +66,7 @@ const HomeScreen = () => {
           }}
         />
         <TouchableOpacity>
-          <Text style={tw`ml-6 text-white text-xl`}>My Rating</Text>
+          <Text onPress={() => {navigation.navigate("RatingScreen");}} style={tw`ml-6 text-white text-xl`}>My Rating</Text>
         </TouchableOpacity>
         <View
           style={{

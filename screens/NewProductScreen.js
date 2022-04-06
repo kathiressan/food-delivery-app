@@ -22,6 +22,7 @@ import {
   import { useNavigation } from "@react-navigation/native";
   import * as ImagePicker from 'expo-image-picker';
 import Header from "../components/Header";
+import MainTitle from "../components/MainTitle";
   
 const NewProductScreen = () => {
   const [image, setImage] = useState(null);
@@ -44,18 +45,7 @@ const NewProductScreen = () => {
   return (
     <SafeAreaView style={tw`flex bg-purple-400 h-full`}>
       <Header />
-      <View>
-        <Text style={tw`mx-auto text-white text-xl`}>Add new product</Text>
-          <View
-            style={{
-              borderColor: "white",
-              borderStyle: "dotted",
-              borderWidth: 1,
-              borderRadius: 1,
-              marginBottom: 15,
-            }}
-          />
-      </View>
+      <MainTitle title={"Add new product"} />
 
       <View style={[tw`h-30 border`, {backgroundColor: "rgba(255,255,255,0.6)"}]}>
             <TouchableOpacity onPress={pickImage}>

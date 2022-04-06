@@ -39,6 +39,7 @@ const RegisterScreen = () => {
     toast.show("Registration Successful!", {
       type: "success",
     });
+    navigation.navigate("LoginScreen");
   };
 
   return (

@@ -14,6 +14,12 @@ import { store } from "./store";
 import { Provider } from "react-redux";
 import RegisterScreen from "./screens/RegisterScreen";
 import NewProductScreen from "./screens/NewProductScreen";
+import WalletScreen from "./screens/WalletBalanceScreen";
+import Product from "./screens/ProductScreen";
+import ProductScreen from "./screens/ProductScreen";
+import WalletCashOutScreen from "./screens/WalletCashOutScreen";
+import RatingScreen from "./screens/RatingScreen";
+import WalletBalanceScreen from "./screens/WalletBalanceScreen";
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -117,9 +123,37 @@ export default function App() {
                     headerShown: false,
                   }}
                 />
-                                <Stack.Screen
+                <Stack.Screen
+                  name="ProductScreen"
+                  component={ProductScreen}
+                  options={{
+                    headerShown: false,
+                  }}
+                />
+                <Stack.Screen
                   name="NewProductScreen"
                   component={NewProductScreen}
+                  options={{
+                    headerShown: false,
+                  }}
+                />
+                <Stack.Screen
+                  name="WalletCashOutScreen"
+                  component={WalletCashOutScreen}
+                  options={{
+                    headerShown: false,
+                  }}
+                />
+                <Stack.Screen
+                  name="RatingScreen"
+                  component={RatingScreen}
+                  options={{
+                    headerShown: false,
+                  }}
+                />
+                <Stack.Screen
+                  name="WalletBalanceScreen"
+                  component={WalletBalanceScreen}
                   options={{
                     headerShown: false,
                   }}
