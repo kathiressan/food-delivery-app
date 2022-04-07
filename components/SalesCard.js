@@ -5,7 +5,7 @@ import tw from "twrnc";
 const SalesCard = ({item: {id, image, productName, unitPrice, totalPaid, quantity, username, name, status}}) => {
   return (
     <SafeAreaView>
-      <View></View>
+      <View><Text>adfj</Text></View>
       <View></View>
       <View></View>
       <View></View>
