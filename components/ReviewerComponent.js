@@ -24,11 +24,11 @@ import { Rating } from "react-native-rating-element";
 
 const ReviewerComponent = ({item: {id, username, rating, timestamp}}) => {
   return (
-    <SafeAreaView style={[tw`flex flex-row border border-white mt-3`, {backgroundColor: "rgba(255,255,255,0.4)"}]}>
-        <View>
+    <SafeAreaView style={[tw`flex flex-row border border-white mt-3 items-center`, {backgroundColor: "rgba(255,255,255,0.4)"}]}>
+        <View style={tw`p-2`}>
             <Text>IMAGE GOES HERE</Text>
         </View>
-        <View>
+        <View style={tw`p-2`}>
             <Text style={tw`text-white font-bold text-lg`}>{username}</Text>
             <Rating
                 rated={rating}

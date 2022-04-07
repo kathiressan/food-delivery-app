@@ -21,6 +21,7 @@ import {
   } from "firebase/firestore/lite";
   import { useNavigation } from "@react-navigation/native";
   import * as ImagePicker from 'expo-image-picker';
+  import WalletButton from './WalletButton'
 
 const ProductCard = ({item: {id, image, productName, price, stock, rating, sold, views}}) => {
   return (
@@ -64,6 +65,16 @@ const ProductCard = ({item: {id, image, productName, price, stock, rating, sold,
         <Text style={tw`text-white mr-3`}>Sold: {sold}</Text>
         <Text style={tw`text-white mr-3`}>Views: {views}</Text>
       </View>
+
+      <View style={tw`flex flex-row justify-center items-center`}>
+        <TouchableOpacity style={tw`mr-5 w-15`}>
+          <WalletButton text={"Delist"} />  
+        </TouchableOpacity>
+        <TouchableOpacity style={tw`w-15`}>
+          <WalletButton text={"Edit"} />  
+        </TouchableOpacity>
+      </View>
+      
     </View>
   );
 };
