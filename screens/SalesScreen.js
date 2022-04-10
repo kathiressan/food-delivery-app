@@ -6,7 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   Platform,
-  FlatList
+  FlatList,
 } from "react-native";
 import React, { useState } from "react";
 import tw from "twrnc";
@@ -29,37 +29,40 @@ import SalesCard from "../components/SalesCard";
 const SalesScreen = () => {
   const DATA = [
     {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-      image: "https://cdn-prod.medicalnewstoday.com/content/images/articles/283/283659/a-basket-of-eggs.jpg",
-      productName: 'Telur Kampung',
-      unitPrice: 15.00,
-      totalPaid: 30.00,
+      id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
+      image:
+        "https://cdn-prod.medicalnewstoday.com/content/images/articles/283/283659/a-basket-of-eggs.jpg",
+      productName: "Telur Kampung",
+      unitPrice: 15.0,
+      totalPaid: 30.0,
       quantity: 2,
       username: "Safwan_27",
       name: "Ahmad Safwan",
-      status: "DELIVERED"
+      status: "DELIVERED",
     },
     {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28bb',
-      image: "https://cdn-prod.medicalnewstoday.com/content/images/articles/283/283659/a-basket-of-eggs.jpg",
-      productName: 'Telur Kampung',
-      unitPrice: 15.00,
-      totalPaid: 30.00,
+      id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28bb",
+      image:
+        "https://cdn-prod.medicalnewstoday.com/content/images/articles/283/283659/a-basket-of-eggs.jpg",
+      productName: "Telur Kampung",
+      unitPrice: 15.0,
+      totalPaid: 30.0,
       quantity: 2,
       username: "Safwan_27",
       name: "Ahmad Safwan",
-      status: "DELIVERY IN PROGRESS"
+      status: "DELIVERY IN PROGRESS",
     },
     {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28bc',
-      image: "https://cdn-prod.medicalnewstoday.com/content/images/articles/283/283659/a-basket-of-eggs.jpg",
-      productName: 'Telur Kampung',
-      unitPrice: 15.00,
-      totalPaid: 30.00,
+      id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28bc",
+      image:
+        "https://cdn-prod.medicalnewstoday.com/content/images/articles/283/283659/a-basket-of-eggs.jpg",
+      productName: "Telur Kampung",
+      unitPrice: 15.0,
+      totalPaid: 30.0,
       quantity: 2,
       username: "Safwan_27",
       name: "Ahmad Safwan",
-      status: "PENDING DELIVERY"
+      status: "PENDING DELIVERY",
     },
   ];
   return (
@@ -67,16 +70,12 @@ const SalesScreen = () => {
       <Header />
       <MainTitle title={"My sales"} />
 
-
       <FlatList
         data={DATA}
         renderItem={SalesCard}
-        keyExtractor={item => item.id}
+        keyExtractor={(item) => item.id}
       />
-
     </SafeAreaView>
   );
 };
 export default SalesScreen;
-
-
