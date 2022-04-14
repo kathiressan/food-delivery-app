@@ -5,6 +5,7 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  ScrollView
 } from "react-native";
 import React, { useState } from "react";
 import tw from "twrnc";
@@ -44,95 +45,100 @@ const RegisterScreen = () => {
 
   return (
     <SafeAreaView style={tw`bg-purple-400 h-full flex items-center`}>
-      <View style={tw`flex items-center`}>
-        <Image
-          style={[
-            tw`mt-20 rounded-full`,
-            { width: 100, height: 100, resizeMode: "contain" },
-          ]}
-          source={{
-            uri: "https://thumbs.dreamstime.com/b/shopping-cart-orange-background-icon-vector-illustration-stock-80754940.jpg",
-          }}
-        />
-        <Text style={tw`font-bold text-4xl`}>Hello Seller!</Text>
-        <Text style={tw`font-bold text-lg`}>Create your account below</Text>
-      </View>
-      <TextInput
-        style={tw`bg-white w-[65%] p-2 border rounded-xl mt-4`}
-        onChangeText={setName}
-        placeholder="Name"
-        value={name}
-      />
-      <TextInput
-        style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
-        onChangeText={setPhoneNumber}
-        placeholder="Phone Number"
-        value={phoneNumber}
-      />
-      <TextInput
-        style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
-        onChangeText={setEmail}
-        placeholder="Email"
-        value={email}
-      />
-      <TextInput
-        style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
-        onChangeText={setPassword}
-        placeholder="Password"
-        secureTextEntry={true}
-        value={password}
-      />
-      <TextInput
-        style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
-        onChangeText={setShopName}
-        placeholder="Shop Name"
-        value={shopName}
-      />
-      <TextInput
-        style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
-        onChangeText={setShopLocation}
-        placeholder="Shop Location"
-        value={shopLocation}
-      />
-      <TextInput
-        style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
-        onChangeText={setShopAddress}
-        placeholder="Shop Address"
-        value={shopAddress}
-      />
-      <TextInput
-        style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
-        onChangeText={setPreferredBank}
-        placeholder="Preferred Bank"
-        value={preferredBank}
-      />
-      <TextInput
-        style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
-        onChangeText={setBankAccountNumber}
-        placeholder="Bank Account Number"
-        value={bankAccountNumber}
-      />
-      <TouchableOpacity style={tw`w-[20%]`}>
-        <Text
-          style={tw`bg-gray-100 text-center border p-2 rounded overflow-hidden mt-2 mb-4`}
-          onPress={registerFunc}
-        >
-          Register
-        </Text>
-      </TouchableOpacity>
-      <View style={tw`flex flex-row mt-6`}>
-        <Text style={tw`mr-2`}>Already have an account?</Text>
-        <TouchableOpacity>
-          <Text
-            style={tw`text-blue-600`}
-            onPress={() => {
-              navigation.navigate("LoginScreen");
+      <ScrollView style={tw`w-[100%]`}>
+
+        <View style={tw`flex items-center w-[100%]`}>
+          <Image
+            style={[
+              tw`mt-20 rounded-full`,
+              { width: 100, height: 100, resizeMode: "contain" },
+            ]}
+            source={{
+              uri: "https://thumbs.dreamstime.com/b/shopping-cart-orange-background-icon-vector-illustration-stock-80754940.jpg",
             }}
-          >
-            Click here
-          </Text>
-        </TouchableOpacity>
-      </View>
+            />
+          <Text style={tw`font-bold text-4xl`}>Hello Seller!</Text>
+          <Text style={tw`font-bold text-lg`}>Create your account below</Text>
+        </View>
+        <View style={tw`flex items-center`}>
+          <TextInput
+            style={tw`bg-white w-[65%] p-2 border rounded-xl mt-4`}
+            onChangeText={setName}
+            placeholder="Name"
+            value={name}
+            />
+          <TextInput
+            style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
+            onChangeText={setPhoneNumber}
+            placeholder="Phone Number"
+            value={phoneNumber}
+            />
+          <TextInput
+            style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
+            onChangeText={setEmail}
+            placeholder="Email"
+            value={email}
+            />
+          <TextInput
+            style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
+            onChangeText={setPassword}
+            placeholder="Password"
+            secureTextEntry={true}
+            value={password}
+            />
+          <TextInput
+            style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
+            onChangeText={setShopName}
+            placeholder="Shop Name"
+            value={shopName}
+            />
+          <TextInput
+            style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
+            onChangeText={setShopLocation}
+            placeholder="Shop Location"
+            value={shopLocation}
+            />
+          <TextInput
+            style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
+            onChangeText={setShopAddress}
+            placeholder="Shop Address"
+            value={shopAddress}
+            />
+          <TextInput
+            style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
+            onChangeText={setPreferredBank}
+            placeholder="Preferred Bank"
+            value={preferredBank}
+            />
+          <TextInput
+            style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
+            onChangeText={setBankAccountNumber}
+            placeholder="Bank Account Number"
+            value={bankAccountNumber}
+            />
+          <TouchableOpacity style={tw`w-[20%]`}>
+            <Text
+              style={tw`bg-gray-100 text-center border p-2 rounded overflow-hidden mt-2 mb-4`}
+              onPress={registerFunc}
+              >
+              Register
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <View style={tw`flex flex-row mt-6 mb-20 mx-auto`}>
+          <Text style={tw`mr-2`}>Already have an account?</Text>
+          <TouchableOpacity>
+            <Text
+              style={tw`text-blue-600`}
+              onPress={() => {
+                navigation.navigate("LoginScreen");
+              }}
+              >
+              Click here
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
