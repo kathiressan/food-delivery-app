@@ -1,8 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import navReducer from "./slices/navSlice";
+import productReducer from "./slices/productSlice";
+import accountReducer from "./slices/accountSlice";
 
 export const store = configureStore({
   reducer: {
-    nav: navReducer,
+    product: productReducer,
+    account: accountReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 });

@@ -13,8 +13,11 @@ import { db } from "../firebase";
 import { getDatabase, ref, onValue, set } from "firebase/database";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { useNavigation } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
+import { setAccount } from "../slices/accountSlice";
 
 const LoginScreen = () => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -29,6 +32,9 @@ const LoginScreen = () => {
     querySnapshot.forEach((doc) => {
       if (doc.data().email == email && doc.data().password == password) {
         validAcc = true;
+        const acc = doc.data();
+        acc.id = doc.id;
+        dispatch(setAccount(acc));
       }
     });
     if (validAcc) {

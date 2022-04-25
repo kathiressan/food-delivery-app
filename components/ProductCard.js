@@ -24,7 +24,7 @@ import * as ImagePicker from "expo-image-picker";
 import WalletButton from "./WalletButton";
 
 const ProductCard = ({
-  item: { id, image, productName, price, stock, rating, sold, views },
+  item: { id, imageUrl, productName, price, stock, rating, sold, views },
 }) => {
   return (
     <View style={tw`flex bg-gray-400 p-3 m-2 border rounded-lg justify-center`}>
@@ -34,10 +34,10 @@ const ProductCard = ({
             on
             style={[
               tw`rounded-lg mr-5`,
-              { width: 40, height: 40, resizeMode: "contain" },
+              { width: 100, height: 70, resizeMode: "contain" },
             ]}
             source={{
-              uri: image,
+              uri: imageUrl,
             }}
           />
         </View>

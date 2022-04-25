@@ -9,15 +9,14 @@ import {
   StyleSheet,
   ScrollView,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import tw from "twrnc";
 import { useToast } from "react-native-toast-notifications";
 import { db } from "../firebase";
-import { getDatabase, onValue, set } from "firebase/database";
 import {
   getStorage,
   ref,
-  uploadString,
+  deleteObject,
   uploadBytes,
   getDownloadURL,
 } from "firebase/storage";
@@ -34,10 +33,12 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import WalletButton from "../components/WalletButton";
 import NewProductFeature from "../components/NewProductFeature";
 import CheckBox from "expo-checkbox";
-import { useSelector } from "react-redux";
-import { selectAccount } from "../slices/accountSlice";
+import { selectProductToEdit, setProductToEdit } from "../slices/productSlice";
+import { useDispatch, useSelector } from "react-redux";
 
-const NewProductScreen = () => {
+const EditProductScreen = () => {
+  const productToEdit = useSelector(selectProductToEdit);
+
   const productsRef = collection(db, "products");
   const navigation = useNavigation();
   const toast = useToast();
@@ -56,15 +57,12 @@ const NewProductScreen = () => {
   const [price, setPrice] = useState(null);
   const [stock, setStock] = useState(null);
 
-  const account = useSelector(selectAccount);
-
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
-      // base64: true,
     });
     if (!result.cancelled) {
       setImage(result.uri);
@@ -116,32 +114,27 @@ const NewProductScreen = () => {
       }
 
       if (canSave) {
-        const insertDoc = await addDoc(productsRef, {
-          sellerID: account.id,
+        let downloadURL;
+        if (image != productToEdit.image) {
+          const storage = getStorage();
+          const imageRef = ref(storage, productToEdit.id);
+          await deleteObject(imageRef);
+
+          const img = await fetch(image);
+          const bytes = await img.blob();
+          await uploadBytes(imageRef, bytes);
+          downloadURL = await getDownloadURL(imageRef);
+        }
+
+        await updateDoc(doc(db, "products", productToEdit.id), {
           name: productName,
           description: productDescription,
           category: catValue,
           dangerousGoods: agreeDanger,
           price: parseFloat(price),
           stock: parseInt(stock),
-          sold: 0,
-          rating: 0.0,
-          views: 0,
           publish: type == "save" ? false : true,
-        });
-        const docID = insertDoc.id;
-
-        console.log("image", image);
-
-        const img = await fetch(image);
-        const bytes = await img.blob();
-        const storage = getStorage();
-        const imageRef = ref(storage, docID);
-        await uploadBytes(imageRef, bytes);
-        const downloadURL = await getDownloadURL(imageRef);
-
-        await updateDoc(doc(db, "products", docID), {
-          imageUrl: downloadURL,
+          ...(downloadURL && { imageUrl: downloadURL }),
         });
 
         toast.show(
@@ -156,6 +149,16 @@ const NewProductScreen = () => {
       alert(err);
     }
   };
+
+  useEffect(() => {
+    setImage(productToEdit.imageUrl);
+    setProductName(productToEdit.name);
+    setProductDescription(productToEdit.description);
+    setCatValue(productToEdit.category);
+    setAgreeDanger(productToEdit.dangerousGoods);
+    setPrice(String(productToEdit.price));
+    setStock(String(productToEdit.stock));
+  }, []);
 
   return (
     <SafeAreaView style={tw`flex bg-purple-400 h-full`}>
@@ -337,4 +340,4 @@ const NewProductScreen = () => {
   );
 };
 
-export default NewProductScreen;
+export default EditProductScreen;
