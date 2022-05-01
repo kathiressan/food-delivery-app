@@ -3,17 +3,7 @@ import React, { useState } from "react";
 import tw from "twrnc";
 
 const SalesCard = ({
-  item: {
-    id,
-    image,
-    productName,
-    unitPrice,
-    totalPaid,
-    quantity,
-    username,
-    name,
-    status,
-  },
+  item: { id, items, subTotal, totalAmount, userID, orderStatus },
 }) => {
   return (
     <SafeAreaView style={tw`bg-white p-2 mb-2 border`}>
@@ -28,37 +18,51 @@ const SalesCard = ({
             uri: "https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small_2x/user-profile-icon-free-vector.jpg",
           }}
         />
-        <Text>{username}</Text>
+        {/* <Text>{username}</Text> */}
+      </View>
+
+      <View style={tw`flex`}>
+        {items.map((item, index) => (
+          <View
+            key={index}
+            style={tw`flex flex-row p-2 items-center justify-between pr-3 pl-3`}
+          >
+            <Image
+              on
+              style={[
+                tw`mr-2`,
+                { width: 95, height: 95, resizeMode: "contain" },
+              ]}
+              source={{
+                uri: item.image,
+              }}
+            />
+            <View style={tw`items-end`}>
+              <Text>{item.productName}</Text>
+              <Text>{`x ${item.unit}`}</Text>
+              <Text>{`RM${item.price}`}</Text>
+            </View>
+          </View>
+        ))}
+      </View>
+
+      <View
+        style={tw`flex flex-row p-2 items-center justify-end pr-3 pl-3 border-b`}
+      >
+        <Text>{`Subtotal: RM${subTotal}`}</Text>
+      </View>
+      <View
+        style={tw`flex flex-row p-2 items-center justify-end pr-3 pl-3 border-b`}
+      >
+        <Text>{`Total Amount: RM${totalAmount}`}</Text>
       </View>
 
       <View
         style={tw`flex flex-row p-2 items-center justify-between pr-3 pl-3`}
       >
-        <Image
-          on
-          style={[tw`mr-2`, { width: 95, height: 95, resizeMode: "contain" }]}
-          source={{
-            uri: "https://cdn-prod.medicalnewstoday.com/content/images/articles/283/283659/a-basket-of-eggs.jpg",
-          }}
-        />
-        <View style={tw`items-end`}>
-          <Text>{productName}</Text>
-          <Text>{`x ${quantity}`}</Text>
-          <Text>{`RM${unitPrice}`}</Text>
-        </View>
-      </View>
-
-      <View
-        style={tw`flex flex-row p-2 items-center justify-between pr-3 pl-3 border-b`}
-      >
-        <Text>{`${quantity} unit`}</Text>
-        <Text>{`Total Payment: RM${totalPaid}`}</Text>
-      </View>
-
-      <View
-        style={tw`flex flex-row p-2 items-center justify-between pr-3 pl-3`}
-      >
-        <Text>{`Item status: ${status}`}</Text>
+        <Text>{`Order status: ${
+          orderStatus == "PENDING_PICKUP" ? "Pending Pickup" : orderStatus
+        }`}</Text>
       </View>
     </SafeAreaView>
   );

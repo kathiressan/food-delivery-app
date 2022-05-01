@@ -58,7 +58,7 @@ const RegisterScreen = () => {
       });
       navigation.navigate("LoginScreen");
     } catch (err) {
-      console.log(err);
+      alert(err);
     }
   };
 

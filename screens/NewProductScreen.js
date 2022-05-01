@@ -128,10 +128,9 @@ const NewProductScreen = () => {
           rating: 0.0,
           views: 0,
           publish: type == "save" ? false : true,
+          ratedBy: [],
         });
         const docID = insertDoc.id;
-
-        console.log("image", image);
 
         const img = await fetch(image);
         const bytes = await img.blob();

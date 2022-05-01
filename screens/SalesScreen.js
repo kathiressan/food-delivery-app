@@ -8,25 +8,50 @@ import {
   Platform,
   FlatList,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import tw from "twrnc";
 import { useToast } from "react-native-toast-notifications";
 import { db } from "../firebase";
-import { getDatabase, ref, onValue, set } from "firebase/database";
 import {
-  getFirestore,
   collection,
   getDocs,
-  query,
+  updateDoc,
+  doc,
+  onSnapshot,
   where,
-} from "firebase/firestore/lite";
+  query,
+} from "firebase/firestore";
 import { useNavigation } from "@react-navigation/native";
 import Header from "../components/Header";
 import MainTitle from "../components/MainTitle";
 import ProductCard from "../components/ProductCard";
 import SalesCard from "../components/SalesCard";
+import { useSelector } from "react-redux";
+import { selectAccount } from "../slices/accountSlice";
 
 const SalesScreen = () => {
+  const [orders, setOrders] = useState([]);
+  const account = useSelector(selectAccount);
+  useEffect(() => {
+    async function getOrders() {
+      const q = query(
+        collection(db, "orders"),
+        where("sellerID", "==", account.id)
+      );
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        try {
+          const docObj = doc.data();
+          docObj.id = doc.id;
+          setOrders((oldArray) => [...oldArray, docObj]);
+        } catch (err) {
+          alert(err);
+        }
+      });
+    }
+
+    getOrders();
+  }, []);
   const DATA = [
     {
       id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
@@ -65,13 +90,14 @@ const SalesScreen = () => {
       status: "PENDING DELIVERY",
     },
   ];
+  console.log("orders", orders);
   return (
     <SafeAreaView style={tw`flex bg-purple-400 h-full`}>
       <Header />
       <MainTitle title={"My sales"} />
 
       <FlatList
-        data={DATA}
+        data={orders}
         renderItem={SalesCard}
         keyExtractor={(item) => item.id}
       />

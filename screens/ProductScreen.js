@@ -57,7 +57,6 @@ const ProductScreen = () => {
     }
     getProducts();
   }, []);
-  console.log(productData);
   const delistProduct = async (productID) => {
     await updateDoc(doc(db, "products", productID), {
       publish: false,

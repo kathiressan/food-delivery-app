@@ -22,7 +22,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { Rating } from "react-native-rating-element";
 
-const ReviewerComponent = ({ item: { id, username, rating, timestamp } }) => {
+const ReviewerComponent = ({ item: { id, username, rating, date } }) => {
   return (
     <SafeAreaView
       style={[
@@ -45,7 +45,7 @@ const ReviewerComponent = ({ item: { id, username, rating, timestamp } }) => {
       <View style={tw`p-2`}>
         <Text style={tw`text-white font-bold text-lg`}>{username}</Text>
         <Rating
-          rated={rating}
+          rated={parseFloat(rating)}
           totalCount={5}
           ratingColor="#f1c644"
           ratingBackgroundColor="#d4d4d4"
@@ -54,7 +54,7 @@ const ReviewerComponent = ({ item: { id, username, rating, timestamp } }) => {
           icon="ios-star"
           direction="row" // anyOf["row" (default), "row-reverse", "column", "column-reverse"]
         />
-        <Text style={tw`text-white`}>{timestamp}</Text>
+        <Text style={tw`text-white`}>{date}</Text>
       </View>
     </SafeAreaView>
   );
