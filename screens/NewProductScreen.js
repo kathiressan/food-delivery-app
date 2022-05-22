@@ -36,6 +36,7 @@ import NewProductFeature from "../components/NewProductFeature";
 import CheckBox from "expo-checkbox";
 import { useSelector } from "react-redux";
 import { selectAccount } from "../slices/accountSlice";
+import { RadioButton } from "react-native-paper";
 
 const NewProductScreen = () => {
   const productsRef = collection(db, "products");
@@ -51,12 +52,28 @@ const NewProductScreen = () => {
   const [four, setFour] = useState(false);
   const [five, setFive] = useState(false);
 
-  const [catValue, setCatValue] = useState(null);
+  const [catValue, setCatValue] = useState("Baby");
   const [agreeDanger, setAgreeDanger] = useState(false);
   const [price, setPrice] = useState(null);
   const [stock, setStock] = useState(null);
 
   const account = useSelector(selectAccount);
+
+  const categoryList = [
+    "Baby",
+    "Beverages",
+    "Bread & Bakery",
+    "Breakfast & Cereal",
+    "Canned Goods",
+    "Condiments/Spices",
+    "Snacks & Candy",
+    "Dairy",
+    "Produce",
+    "Pasta",
+    "Meat",
+    "Cleaning Supplies",
+    "Personal Care",
+  ];
 
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -236,14 +253,26 @@ const NewProductScreen = () => {
         </TouchableOpacity>
 
         {one ? (
-          <TouchableOpacity>
-            <TextInput
-              style={tw` text-black p-2 bg-white`}
-              onChangeText={setCatValue}
-              placeholder="Enter category name"
+          <ScrollView horizontal={true} style={tw`p-2 bg-white text-black`}>
+            <RadioButton.Group
+              onValueChange={(newValue) => setCatValue(newValue)}
               value={catValue}
-            />
-          </TouchableOpacity>
+            >
+              <View style={tw`flex flex-row`}>
+                {categoryList.map((item) => (
+                  <View
+                    key={item}
+                    style={tw`flex flex-row items-center border mr-3 p-1`}
+                  >
+                    <Text>{item}</Text>
+                    <View style={tw`bg-gray-300`}>
+                      <RadioButton value={item} />
+                    </View>
+                  </View>
+                ))}
+              </View>
+            </RadioButton.Group>
+          </ScrollView>
         ) : null}
 
         <TouchableOpacity
