@@ -215,6 +215,7 @@ const NewProductScreen = () => {
               style={tw`w-[65%]`}
               onChangeText={setProductName}
               placeholder="Enter product name"
+              placeholderTextColor="black"
               value={productName}
             />
           </TouchableOpacity>
@@ -235,6 +236,7 @@ const NewProductScreen = () => {
               style={tw`w-[65%]`}
               onChangeText={setProductDescription}
               placeholder="Enter product description"
+              placeholderTextColor="black"
               value={productDescription}
             />
           </TouchableOpacity>
@@ -313,12 +315,13 @@ const NewProductScreen = () => {
               style={tw` text-black p-2 bg-white`}
               onChangeText={setPrice}
               placeholder="Enter price"
+              placeholderTextColor="black"
               value={price}
             />
           </TouchableOpacity>
         ) : null}
 
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={() => {
             setFour(!four);
           }}
@@ -327,7 +330,7 @@ const NewProductScreen = () => {
             featureName={"Variations"}
             icon={<Fontisto name="shopping-bag-1" size={20} />}
           />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
         <TouchableOpacity
           onPress={() => {
@@ -347,6 +350,7 @@ const NewProductScreen = () => {
               style={tw` text-black p-2 bg-white`}
               onChangeText={setStock}
               placeholder="Enter stock"
+              placeholderTextColor="black"
               value={stock}
             />
           </TouchableOpacity>

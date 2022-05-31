@@ -68,6 +68,7 @@ const LoginScreen = () => {
       <TextInput
         style={tw`bg-white w-[65%] p-2 border rounded-xl mt-4`}
         onChangeText={setEmail}
+        placeholderTextColor="black"
         placeholder="Email"
         value={email}
       />
@@ -75,6 +76,7 @@ const LoginScreen = () => {
         style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
         onChangeText={setPassword}
         placeholder="Password"
+        placeholderTextColor="black"
         secureTextEntry={true}
         value={password}
       />

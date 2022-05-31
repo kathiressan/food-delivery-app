@@ -81,6 +81,7 @@ const WalletCashOutScreen = () => {
             style={tw`text-lg w-20 mt-[-6] border-b`}
             onChangeText={setCashInput}
             placeholder="Input cash out amount"
+            placeholderTextColor="black"
             value={`${cashInput}`}
           />
         </View>
@@ -130,6 +131,7 @@ const WalletCashOutScreen = () => {
           style={tw`text-sm w-60 border ml-8`}
           onChangeText={setAccNum}
           placeholder="Enter the account number"
+          placeholderTextColor="black"
           value={`${accNum}`}
         />
       </View>

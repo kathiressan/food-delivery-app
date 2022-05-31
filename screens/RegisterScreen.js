@@ -83,24 +83,28 @@ const RegisterScreen = () => {
             style={tw`bg-white w-[65%] p-2 border rounded-xl mt-4`}
             onChangeText={setName}
             placeholder="Name"
+            placeholderTextColor="black"
             value={name}
           />
           <TextInput
             style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
             onChangeText={setPhoneNumber}
             placeholder="Phone Number"
+            placeholderTextColor="black"
             value={phoneNumber}
           />
           <TextInput
             style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
             onChangeText={setEmail}
             placeholder="Email"
+            placeholderTextColor="black"
             value={email}
           />
           <TextInput
             style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
             onChangeText={setPassword}
             placeholder="Password"
+            placeholderTextColor="black"
             secureTextEntry={true}
             value={password}
           />
@@ -108,30 +112,35 @@ const RegisterScreen = () => {
             style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
             onChangeText={setShopName}
             placeholder="Shop Name"
+            placeholderTextColor="black"
             value={shopName}
           />
           <TextInput
             style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
             onChangeText={setShopLocation}
             placeholder="Shop Location"
+            placeholderTextColor="black"
             value={shopLocation}
           />
           <TextInput
             style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
             onChangeText={setShopAddress}
             placeholder="Shop Address"
+            placeholderTextColor="black"
             value={shopAddress}
           />
           <TextInput
             style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
             onChangeText={setPreferredBank}
             placeholder="Preferred Bank"
+            placeholderTextColor="black"
             value={preferredBank}
           />
           <TextInput
             style={tw`bg-white w-[65%] p-2 border rounded-xl mt-2`}
             onChangeText={setBankAccountNumber}
             placeholder="Bank Account Number"
+            placeholderTextColor="black"
             value={bankAccountNumber}
           />
           <TouchableOpacity style={tw`w-[20%]`}>
