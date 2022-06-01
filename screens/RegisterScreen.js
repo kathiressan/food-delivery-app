@@ -23,15 +23,15 @@ import {
 import { useNavigation } from "@react-navigation/native";
 
 const RegisterScreen = () => {
-  const [name, setName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [shopName, setShopName] = useState("");
-  const [shopLocation, setShopLocation] = useState("");
-  const [shopAddress, setShopAddress] = useState("");
-  const [preferredBank, setPreferredBank] = useState("");
-  const [bankAccountNumber, setBankAccountNumber] = useState("");
+  const [name, setName] = useState(null);
+  const [phoneNumber, setPhoneNumber] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [shopName, setShopName] = useState(null);
+  const [shopLocation, setShopLocation] = useState(null);
+  const [shopAddress, setShopAddress] = useState(null);
+  const [preferredBank, setPreferredBank] = useState(null);
+  const [bankAccountNumber, setBankAccountNumber] = useState(null);
 
   const toast = useToast();
   const accountsRef = collection(db, "accounts");
@@ -39,24 +39,30 @@ const RegisterScreen = () => {
 
   const registerFunc = async () => {
     try {
-      await addDoc(accountsRef, {
-        name: name,
-        phoneNumber: phoneNumber,
-        email: email,
-        password: password,
-        shopName: shopName,
-        shopLocation: shopLocation,
-        shopAddress: shopAddress,
-        preferredBank: preferredBank,
-        bankAccountNumber: bankAccountNumber,
-        totalCollected: 0.0,
-        totalWallet: 0.0,
-        accountType: "Seller",
-      });
-      toast.show("Registration Successful!", {
-        type: "success",
-      });
-      navigation.navigate("LoginScreen");
+      if (!name || !phoneNumber || !email || !password || !shopName || !shopLocation || !shopAddress || !preferredBank || !bankAccountNumber) {
+        toast.show("Please fill up all fields", {
+          type: "danger",
+        });
+      } else {
+        await addDoc(accountsRef, {
+          name: name,
+          phoneNumber: phoneNumber,
+          email: email,
+          password: password,
+          shopName: shopName,
+          shopLocation: shopLocation,
+          shopAddress: shopAddress,
+          preferredBank: preferredBank,
+          bankAccountNumber: bankAccountNumber,
+          totalCollected: 0.0,
+          totalWallet: 0.0,
+          accountType: "Seller",
+        });
+        toast.show("Registration Successful!", {
+          type: "success",
+        });
+        navigation.navigate("LoginScreen");
+      }
     } catch (err) {
       alert(err);
     }

@@ -33,7 +33,7 @@ const Header = () => {
           />
         </TouchableOpacity>
 
-        <Image
+        {/* <Image
           style={[
             tw`rounded-full`,
             { width: 55, height: 55, resizeMode: "contain" },
@@ -41,7 +41,7 @@ const Header = () => {
           source={{
             uri: "https://thumbs.dreamstime.com/b/shopping-cart-orange-background-icon-vector-illustration-stock-80754940.jpg",
           }}
-        />
+        /> */}
         <Avatar
           onPress={logoutFunc}
           size={55}

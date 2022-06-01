@@ -96,8 +96,8 @@ const ProductScreen = () => {
                 />
               </View>
 
-              <View style={tw`flex`}>
-                <Text style={tw`text-white`}>{item.productName}</Text>
+              <View style={tw`flex flex-1`}>
+                <Text style={tw`text-white`}>{item.name}</Text>
                 <Text style={tw`text-white`}>{`RM ${item.price}`}</Text>
               </View>
             </View>
