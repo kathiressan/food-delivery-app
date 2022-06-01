@@ -71,7 +71,6 @@ const ProductScreen = () => {
     dispatch(setProductToEdit(item));
     navigation.navigate("EditProductScreen");
   };
-
   return (
     <SafeAreaView style={tw`flex bg-purple-400 h-full`}>
       <Header />
